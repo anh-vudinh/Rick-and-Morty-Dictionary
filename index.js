@@ -9,9 +9,15 @@ const bottomGallery = document.querySelector("#bottom-gallery")
 const searchForm =document.createElement("form")
 const characterSearchDiv = document.querySelector("#character-search")
 const searchSelect = document.createElement("select")
-const searchSelctArray = ["Dead","Alive","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
+const searchSelectArray = ["Dead","Alive","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
 const characterImg = document.querySelector("#character-img")
 const characterInfo = document.querySelector("#character-info")
+const searchInputText = document.createElement("input")
+const updateDiv = document.querySelector("#update")
+const likeDiv = document.querySelector("#like")
+const dislikeDiv = document.querySelector("#dislike")
+const likeCountDiv = document.querySelector("#like-counter")
+
 let characterNameArray = []
 init();
 function init(){
@@ -28,7 +34,7 @@ function getAllCharacters(){
   fetch(BASE_URLP)
   .then(resp => resp.json())
   .then(data => {
-    characterResults.push(data)
+    characterResults = data
   }) 
 }
 function give8RandomNumbers(){                  // WORKS
@@ -52,25 +58,24 @@ function createGalleryImg(){
     imageGalleryArray.forEach(image => {
         const imageG = document.createElement("img")
         imageG.src = `${image.image}`
-        imageG.style = "height: 150px; width: 150px"
+        imageG.style = "height: 200px; width: 200px"
         imageG.id =`ig${image.id}`
         topGallery.childElementCount >= 4?  bottomGallery.append(imageG):topGallery.append(imageG)
-        //imageG.addEventListener("click", /*()=>console.log(image)*/)
-
+        imageG.addEventListener("click", ()=> {
+          clearGallery()
+          displaySelectCharacter(image)})
     })
 }
 
 function createSearchForm(){
   characterSearchDiv.append(searchForm)
-  const searchInputText = document.createElement("input")
-  const searchInputBtn = document.createElement("input")
-  searchInputBtn.type = "submit"
-  searchInputBtn.textContent ="submit"
+ 
+  
   searchInputText.type ="text"
   searchForm.append(searchSelect)
   searchForm.append(searchInputText)
-  searchForm.append(searchInputBtn)
-  searchSelctArray.forEach(element => {
+  
+  searchSelectArray.forEach(element => {
     const searchSelectOption = document.createElement("option")
     searchSelectOption.textContent = element
     searchSelect.append(searchSelectOption)
@@ -78,41 +83,122 @@ function createSearchForm(){
   ///// ignore first click of the searchSelect Dropdown
   searchSelect.addEventListener("click", ()=> {
     if(click1 === true) {
-      click1 = false
-     } else{
-      searchSelect.value
-      return click1 = true
+       click1 = false
+       } else{
+      let category;
+      let searchSelectValue = searchSelect.value;
+      if(searchSelect.value === "Alive"||searchSelect.value === "Dead"||searchSelect.value === "Unknown Status"){
+        category = "status"
+        if(searchSelectValue === "Unknown Status"){
+          searchSelectValue = "unknown"
+        }
+      }
+     if(searchSelect.value === "Male"||searchSelect.value === "Female"||searchSelect.value === "Unknown Gender"){
+      category = "gender"
+        if(searchSelectValue === "Unknown Gender"){
+         searchSelectValue = "unknown"
+      }
+      }
+      if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
+      category = "species"
+      }
+      clearGallery()
+      keyupSearch(searchSelectValue,category)
+      
+     return click1 = true
+
     }
+
   })
   //// eventlistener for the searchInputText.value
+  searchInputText.addEventListener("keyup", () =>{
+    clearGallery()
+    keyupSearch(searchInputText.value,"name")
 
-  searchForm.addEventListener("submit", (e) =>{
-    e.preventDefault()
-  
-    displaySearchResult(searchInputText.value)
   })
   
 }
 
+function keyupSearch(searchInputText,category){
+  const string = searchInputText.toLowerCase()
+  const searchInput = characterResults.filter((element) => {
+  return element[`${category}`].toLowerCase().includes(string)     
+  })
+  
+  imageGalleryArray = searchInput.slice(0,8)
+  if(topGallery.childElementCount > 0){
+    topGallery.textContent = ""
+    bottomGallery.textContent = ""
+}
+  createGalleryImg()
+ 
+}
+    
+function displaySelectCharacter(image){
+  // console.log(image)
+  const selectImage = document.createElement("img")
+  selectImage.src = image.image
+  if(characterImg.hasChildNodes() === true){
+  characterImg.textContent =""}
+  characterImg.append(selectImage)
+  const selectImageDetails = ["name","status","species","gender","origin"]
+  selectImageDetails.forEach(element => {
+  
+  const divTagInfo = document.createElement("div")
+  const labelTagInfo = document.createElement("label")
+  const pTagInfo = document.createElement("p")
+  labelTagInfo.textContent = element.toUpperCase()+" : "
+  pTagInfo.id = `PT${element}${image.id}`
+  pTagInfo.contentEditable = "true"
+  element === "origin"? pTagInfo.textContent = Object.values(image[`${element}`])[0] : pTagInfo.textContent = image[`${element}`]
+  divTagInfo.append(labelTagInfo)
+  divTagInfo.append(pTagInfo)
+  characterInfo.append(divTagInfo)
 
-function displaySearchResult (searchInputText){
-    console.log(searchInputText)
-    for(let i=0;i<671;i++){
-      characterNameArray.push(characterResults[0][i].name)
-    }
-    console.log(characterNameArray)
-    // const indexFoundAt = characterResults.findIndex(element => console.log())
-    console.log(indexFoundAt)
-    // console.log(characterResults.filter(name => {
-    //   if(searchInputText.value === name){
-        
+  })
+  saveChanges()
+  likeDislike()
+}
+function saveChanges(){
+  const saveBtn = document.createElement("button")
+  saveBtn.textContent = "Save Changes"
+  updateDiv.append(saveBtn)
 
-    //   }
-    // })
-} 
+}
 
+function clearGallery(){
+  if(topGallery.hasChildNodes()=== true){
+  topGallery.textContent =""
+  bottomGallery.textContent =""
+  }else{
+    characterImg.textContent =""
+    characterInfo.textContent =""
+    updateDiv.textContent = ""
+    likeDiv.textContent = ""
+    dislikeDiv.textContent = ""
+    likeCountDiv.textContent = ""
+  }
+}
 
-
+function likeDislike(){
+  const likeBtn = document.createElement("button")
+  const dislikeBtn = document.createElement("button")
+  const likeCount = document.createElement("p")
+  likeDiv.append(likeBtn)
+  dislikeDiv.append(dislikeBtn)
+  likeCountDiv.append(likeCount)
+  likeBtn.textContent = "Like"
+  dislikeBtn.textContent = "Dislike"
+  likeCount.textContent = 0
+  likeBtn.addEventListener("click", () =>{
+  let likeNum = parseInt(likeCount.textContent)
+  likeCount.textContent = ++likeNum
+})
+  dislikeBtn.addEventListener("click", () =>{
+    let likeNum = parseInt(likeCount.textContent)
+    likeCount.textContent = --likeNum
+  })
+}
 
 
 
@@ -207,3 +293,30 @@ function displaySearchResult (searchInputText){
 //     }}
 //   })
 // }
+
+///// Replece by powerful keyup/////
+
+// function displaySearchResult (searchInputText){
+//     console.log(searchInputText)
+//     for(let i=0;i<671;i++){
+//       characterNameArray.push(characterResults[0][i].name)
+//     }
+//     console.log(characterNameArray)
+
+ 
+//   characterNameArray.filter(name => {
+//     if(name === searchInputText){
+//       // console.log(characterNameArray.includes(searchInputText))
+//       console.log(characterNameArray.indexOf(searchInputText))
+//     }
+  
+//   })
+
+  //   characterNameArray.filter(name => {
+
+  //     if(searchInputText.value === name){
+  //       console.log("true")
+  //       const indexFoundAt = characterNameArray.indexOf(element => console.log())
+  //       console.log(indexFoundAt)
+  //     }
+  //  })
