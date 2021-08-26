@@ -142,15 +142,17 @@ body{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    width: 50%;
+    width: fit-content;
     align-items: center;
     position: absolute;
     top: 0;
+    height: fit-content;
+    border-radius: 20px;
 }
 
 #character-img{
     padding: 10px;
-    background-color: rgba(226, 226, 226, 0.5)
+
 }
 
 
@@ -182,7 +184,9 @@ body{
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
-    background-color: rgba(226, 226, 226, 0.5)
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
 }
 
 @media only screen and (max-width: 1120px) {

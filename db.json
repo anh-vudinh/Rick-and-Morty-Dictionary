@@ -186,8 +186,7 @@
       "type": "",
       "gender": "Female",
       "origin": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
+        "name": "Earth (Replacement Dimension)"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -230,7 +229,8 @@
         "https://rickandmortyapi.com/api/episode/41"
       ],
       "url": "https://rickandmortyapi.com/api/character/4",
-      "created": "2017-11-04T19:22:43.665Z"
+      "created": "2017-11-04T19:22:43.665Z",
+      "likes": "2"
     },
     {
       "id": 5,

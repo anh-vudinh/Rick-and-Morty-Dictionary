@@ -21,7 +21,8 @@ const updateDiv = document.querySelector("#update")
 const likeDiv = document.querySelector("#like")
 const dislikeDiv = document.querySelector("#dislike")
 const likeCountDiv = document.querySelector("#like-counter")
-
+const searchDisplay = document.querySelector("#search-result")
+const userInputDiv = document.querySelector("#user-input")
 
 init();
 
@@ -147,7 +148,8 @@ function keyupSearch(searchInputText,category){
 function displaySelectCharacter(image){
   const selectImage = document.createElement("img")
   selectImage.src = image.image
-  characterInfo.style.backgroundColor = "rgba(226, 226, 226, 0.5)"
+  searchDisplay.style.backgroundColor = "rgba(226, 226, 226, 0.5)"
+  userInputDiv.style.backgroundColor = "rgba(226, 226, 226, 0.5)"
   if(characterImg.hasChildNodes() === true){
   characterImg.textContent =""}
   characterImg.append(selectImage)
@@ -176,7 +178,8 @@ function clearGallery(){
   else{
     characterImg.textContent =""
     characterInfo.textContent =""
-    characterInfo.style.backgroundColor = "transparent"
+    searchDisplay.style.backgroundColor = "transparent"
+    userInputDiv.style.backgroundColor = "transparent"
     updateDiv.textContent = ""
     likeDiv.textContent = ""
     dislikeDiv.textContent = ""
