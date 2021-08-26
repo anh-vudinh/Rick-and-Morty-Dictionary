@@ -4,12 +4,14 @@ let characterResults = [];
 let randomNumberArray = [];
 let imageGalleryArray =[];
 let click1 = true;
+const mainWindow = document.querySelector(".main-window")
+const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
 const bottomGallery = document.querySelector("#bottom-gallery")
 const searchForm =document.createElement("form")
 const characterSearchDiv = document.querySelector("#character-search")
 const searchSelect = document.createElement("select")
-const searchSelectArray = ["Dead","Alive","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
+const searchSelectArray = ["Alive","Dead","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
 const characterImg = document.querySelector("#character-img")
 const characterInfo = document.querySelector("#character-info")
 const searchInputText = document.createElement("input")
@@ -21,11 +23,11 @@ const likeCountDiv = document.querySelector("#like-counter")
 let characterNameArray = []
 init();
 function init(){
+    //delayDataPull();
     getAllCharacters()
     give8RandomNumbers()
     getGalleryCharacter()
-  //delayDataPull();
-  createSearchForm()
+    createSearchForm()
 }
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                 Populating Image Gallery             ////\\////\\////\\////\\//
@@ -67,11 +69,14 @@ function createGalleryImg(){
     })
 }
 
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+//\\////\\////\\////\\////                      Search Bar                      ////\\////\\////\\////\\//
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+
 function createSearchForm(){
   characterSearchDiv.append(searchForm)
- 
-  
   searchInputText.type ="text"
+  searchInputText.placeholder = "  Search by Name"
   searchForm.append(searchSelect)
   searchForm.append(searchInputText)
   
@@ -84,7 +89,8 @@ function createSearchForm(){
   searchSelect.addEventListener("click", ()=> {
     if(click1 === true) {
        click1 = false
-       } else{
+    } 
+    else{
       let category;
       let searchSelectValue = searchSelect.value;
       if(searchSelect.value === "Alive"||searchSelect.value === "Dead"||searchSelect.value === "Unknown Status"){
@@ -93,19 +99,19 @@ function createSearchForm(){
           searchSelectValue = "unknown"
         }
       }
-     if(searchSelect.value === "Male"||searchSelect.value === "Female"||searchSelect.value === "Unknown Gender"){
+      if(searchSelect.value === "Male"||searchSelect.value === "Female"||searchSelect.value === "Unknown Gender"){
       category = "gender"
         if(searchSelectValue === "Unknown Gender"){
          searchSelectValue = "unknown"
-      }
+        }
       }
       if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
-      category = "species"
+        category = "species"
       }
       clearGallery()
       keyupSearch(searchSelectValue,category)
       
-     return click1 = true
+      return click1 = true
 
     }
 
@@ -114,9 +120,7 @@ function createSearchForm(){
   searchInputText.addEventListener("keyup", () =>{
     clearGallery()
     keyupSearch(searchInputText.value,"name")
-
   })
-  
 }
 
 function keyupSearch(searchInputText,category){
@@ -129,32 +133,35 @@ function keyupSearch(searchInputText,category){
   if(topGallery.childElementCount > 0){
     topGallery.textContent = ""
     bottomGallery.textContent = ""
-}
+  }
   createGalleryImg()
  
 }
-    
+
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+//\\////\\////\\////\\////                Display Selected Character            ////\\////\\////\\////\\//
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+
+
 function displaySelectCharacter(image){
-  // console.log(image)
   const selectImage = document.createElement("img")
   selectImage.src = image.image
+  characterInfo.style.backgroundColor = "rgba(226, 226, 226, 0.5)"
   if(characterImg.hasChildNodes() === true){
   characterImg.textContent =""}
   characterImg.append(selectImage)
   const selectImageDetails = ["name","status","species","gender","origin"]
   selectImageDetails.forEach(element => {
-  
-  const divTagInfo = document.createElement("div")
-  const labelTagInfo = document.createElement("label")
-  const pTagInfo = document.createElement("p")
-  labelTagInfo.textContent = element.toUpperCase()+" : "
-  pTagInfo.id = `PT${element}${image.id}`
-  pTagInfo.contentEditable = "true"
-  element === "origin"? pTagInfo.textContent = Object.values(image[`${element}`])[0] : pTagInfo.textContent = image[`${element}`]
-  divTagInfo.append(labelTagInfo)
-  divTagInfo.append(pTagInfo)
-  characterInfo.append(divTagInfo)
-
+    const divTagInfo = document.createElement("div")
+    const labelTagInfo = document.createElement("label")
+    const spanTagInfo = document.createElement("span")
+    labelTagInfo.textContent = element.toUpperCase()+" : "
+    spanTagInfo.id = `PT${element}${image.id}`
+    spanTagInfo.contentEditable = "true"
+    element === "origin"? spanTagInfo.textContent = Object.values(image[`${element}`])[0] : spanTagInfo.textContent = image[`${element}`]
+    divTagInfo.append(labelTagInfo)
+    divTagInfo.append(spanTagInfo)
+    characterInfo.append(divTagInfo)
   })
   saveChanges()
   likeDislike()
@@ -163,16 +170,17 @@ function saveChanges(){
   const saveBtn = document.createElement("button")
   saveBtn.textContent = "Save Changes"
   updateDiv.append(saveBtn)
-
 }
 
 function clearGallery(){
   if(topGallery.hasChildNodes()=== true){
-  topGallery.textContent =""
-  bottomGallery.textContent =""
-  }else{
+    topGallery.textContent =""
+    bottomGallery.textContent =""
+  }
+  else{
     characterImg.textContent =""
     characterInfo.textContent =""
+    characterInfo.style.backgroundColor = "transparent"
     updateDiv.textContent = ""
     likeDiv.textContent = ""
     dislikeDiv.textContent = ""
@@ -187,19 +195,16 @@ function likeDislike(){
   likeDiv.append(likeBtn)
   dislikeDiv.append(dislikeBtn)
   likeCountDiv.append(likeCount)
-  likeBtn.textContent = "Like"
-  dislikeBtn.textContent = "Dislike"
   likeCount.textContent = 0
   likeBtn.addEventListener("click", () =>{
-  let likeNum = parseInt(likeCount.textContent)
-  likeCount.textContent = ++likeNum
-})
+    let likeNum = parseInt(likeCount.textContent)
+    likeCount.textContent = ++likeNum
+  })
   dislikeBtn.addEventListener("click", () =>{
     let likeNum = parseInt(likeCount.textContent)
     likeCount.textContent = --likeNum
   })
 }
-
 
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
