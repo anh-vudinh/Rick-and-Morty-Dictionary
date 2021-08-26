@@ -2062,8 +2062,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -2075,7 +2074,8 @@
         "https://rickandmortyapi.com/api/episode/28"
       ],
       "url": "https://rickandmortyapi.com/api/character/85",
-      "created": "2017-11-30T20:49:52.133Z"
+      "created": "2017-11-30T20:49:52.133Z",
+      "likes": ""
     },
     {
       "id": 86,
@@ -2909,8 +2909,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -2921,7 +2920,8 @@
         "https://rickandmortyapi.com/api/episode/28"
       ],
       "url": "https://rickandmortyapi.com/api/character/123",
-      "created": "2017-12-26T17:22:40.315Z"
+      "created": "2017-12-26T17:22:40.315Z",
+      "likes": ""
     },
     {
       "id": 124,
@@ -3114,8 +3114,7 @@
       "type": "Mytholog",
       "gender": "Male",
       "origin": {
-        "name": "Nuptia 4",
-        "url": "https://rickandmortyapi.com/api/location/13"
+        "name": "Nuptia 4"
       },
       "location": {
         "name": "Nuptia 4",
@@ -3126,7 +3125,8 @@
         "https://rickandmortyapi.com/api/episode/18"
       ],
       "url": "https://rickandmortyapi.com/api/character/132",
-      "created": "2017-12-26T20:02:38.033Z"
+      "created": "2017-12-26T20:02:38.033Z",
+      "likes": ""
     },
     {
       "id": 133,
@@ -11175,8 +11175,7 @@
       "type": "",
       "gender": "unknown",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -11187,7 +11186,8 @@
         "https://rickandmortyapi.com/api/episode/30"
       ],
       "url": "https://rickandmortyapi.com/api/character/492",
-      "created": "2018-05-22T17:49:13.883Z"
+      "created": "2018-05-22T17:49:13.883Z",
+      "likes": ""
     },
     {
       "id": 493,
@@ -11307,8 +11307,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Fascist Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/77"
+        "name": "Earth (Fascist Dimension)"
       },
       "location": {
         "name": "Earth (Fascist Dimension)",
@@ -11319,7 +11318,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/498",
-      "created": "2020-05-02T10:34:12.495Z"
+      "created": "2020-05-02T10:34:12.495Z",
+      "likes": ""
     },
     {
       "id": 499,
@@ -11747,8 +11747,7 @@
       "type": "Wasp",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Wasp Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/82"
+        "name": "Earth (Wasp Dimension)"
       },
       "location": {
         "name": "Earth (Wasp Dimension)",
@@ -11759,7 +11758,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/518",
-      "created": "2020-05-02T12:39:50.688Z"
+      "created": "2020-05-02T12:39:50.688Z",
+      "likes": ""
     },
     {
       "id": 519,
@@ -13420,8 +13420,7 @@
       "type": "Half Soulless Puppet",
       "gender": "Male",
       "origin": {
-        "name": "Tickets Please Guy Nightmare",
-        "url": "https://rickandmortyapi.com/api/location/98"
+        "name": "Tickets Please Guy Nightmare"
       },
       "location": {
         "name": "Tickets Please Guy Nightmare",
@@ -13432,7 +13431,8 @@
         "https://rickandmortyapi.com/api/episode/37"
       ],
       "url": "https://rickandmortyapi.com/api/character/594",
-      "created": "2020-08-06T09:54:08.973Z"
+      "created": "2020-08-06T09:54:08.973Z",
+      "likes": ""
     },
     {
       "id": 595,
@@ -13486,8 +13486,7 @@
       "type": "Soulless Puppet",
       "gender": "Male",
       "origin": {
-        "name": "Story Train",
-        "url": "https://rickandmortyapi.com/api/location/96"
+        "name": "Story Train"
       },
       "location": {
         "name": "Story Train",
@@ -13498,7 +13497,8 @@
         "https://rickandmortyapi.com/api/episode/37"
       ],
       "url": "https://rickandmortyapi.com/api/character/597",
-      "created": "2020-08-06T11:33:03.426Z"
+      "created": "2020-08-06T11:33:03.426Z",
+      "likes": ""
     },
     {
       "id": 598,
@@ -13992,8 +13992,7 @@
       "type": "Soulless Puppet",
       "gender": "Male",
       "origin": {
-        "name": "Story Train",
-        "url": "https://rickandmortyapi.com/api/location/96"
+        "name": "Story Train"
       },
       "location": {
         "name": "Story Train",
@@ -14004,7 +14003,8 @@
         "https://rickandmortyapi.com/api/episode/37"
       ],
       "url": "https://rickandmortyapi.com/api/character/620",
-      "created": "2020-08-06T15:58:14.525Z"
+      "created": "2020-08-06T15:58:14.525Z",
+      "likes": ""
     },
     {
       "id": 621,
@@ -14080,8 +14080,7 @@
       "type": "Soulless Puppet",
       "gender": "Male",
       "origin": {
-        "name": "Story Train",
-        "url": "https://rickandmortyapi.com/api/location/96"
+        "name": "Story Train"
       },
       "location": {
         "name": "Story Train",
@@ -14092,7 +14091,8 @@
         "https://rickandmortyapi.com/api/episode/37"
       ],
       "url": "https://rickandmortyapi.com/api/character/624",
-      "created": "2020-08-06T16:03:17.291Z"
+      "created": "2020-08-06T16:03:17.291Z",
+      "likes": ""
     },
     {
       "id": 625,
@@ -14806,8 +14806,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Merged Universe",
-        "url": "https://rickandmortyapi.com/api/location/103"
+        "name": "Merged Universe"
       },
       "location": {
         "name": "Merged Universe",
@@ -14818,7 +14817,8 @@
         "https://rickandmortyapi.com/api/episode/39"
       ],
       "url": "https://rickandmortyapi.com/api/character/657",
-      "created": "2020-08-13T11:21:32.236Z"
+      "created": "2020-08-13T11:21:32.236Z",
+      "likes": ""
     },
     {
       "id": 658,

@@ -23,7 +23,8 @@ const dislikeDiv = document.querySelector("#dislike")
 const likeCountDiv = document.querySelector("#like-counter")
 const searchDisplay = document.querySelector("#search-result")
 const userInputDiv = document.querySelector("#user-input")
-
+const nextBtn = document.createElement("button")
+const characterContainer = document.querySelector("#character-container")
 init();
 
 function init(){
@@ -31,6 +32,7 @@ function init(){
     getAllCharacters()
     getGalleryCharacter()
     createSearchForm()
+    nextBtnSearch()
 }
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                 Populating Image Gallery             ////\\////\\////\\////\\//
@@ -46,6 +48,7 @@ function getAllCharacters(){
 function give8RandomNumbers(dataLength){
   for(let i = 0; i < 8; i++){
       randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
+      
   }
   return randomNumberArray
 }
@@ -54,6 +57,7 @@ function getGalleryCharacter(){
     fetch(BASE_URLP)
     .then(resp => resp.json())
     .then(data => {
+        imageGalleryArray =[]
         give8RandomNumbers(data.length)
         randomNumberArray.forEach(num => imageGalleryArray.push(data[num]))
         createGalleryImg()
@@ -73,6 +77,20 @@ function createGalleryImg(){
         })
     })
 }
+
+function nextBtnSearch(){
+  nextBtn.id = "next-btn"
+  characterContainer.append(nextBtn)
+  nextBtn.addEventListener("click", () => {
+    randomNumberArray = []
+    topGallery.textContent = ""
+    bottomGallery.textContent = ""
+    console.log(randomNumberArray)
+    getGalleryCharacter()
+  })
+  
+}
+
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                      Search Bar                      ////\\////\\////\\////\\//
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -215,6 +233,9 @@ function saveChanges(selectedCharacter){
   const saveBtn = document.createElement("button")
   saveBtn.textContent = "Save Changes"
   updateDiv.append(saveBtn)
+  saveBtn.onmouseenter = function(){saveBtn.style.backgroundColor = "rgb(255, 160, 71)"}
+  saveBtn.onmouseleave = function(){saveBtn.style.backgroundColor = "whitesmoke"}
+  saveBtn.onmousedown = function(){saveBtn.style.backgroundColor = "rgb(219, 34, 71)"}
   saveBtn.addEventListener("click", ()=> {
     let newName = document.querySelector(`#PTname${selectedCharacter.id}`)
     let newStatus = document.querySelector(`#PTstatus${selectedCharacter.id}`)
@@ -234,6 +255,7 @@ function saveChanges(selectedCharacter){
       "likes": newLikeCount
     }
     patchToDB(updateData)
+    
   })
 }
 

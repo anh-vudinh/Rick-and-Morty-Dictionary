@@ -14,7 +14,10 @@ body{
     align-content: center;
     justify-content: center;
     width: 100vw;
-    background-color: #00237A8f;
+    background-image: url('assets/top-banner-two-1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.75;
 }
 
 @media only screen and (max-width: 795px) {
@@ -30,7 +33,8 @@ body{
     font-size: 58px;
     font-family: Rockwell;
     white-space: nowrap;
-    color: lightgrey;
+    color: white;
+    opacity: 1;
 }
 
 @media only screen and (max-width: 795px) {
@@ -123,7 +127,15 @@ body{
     background-color: rgba(226, 226, 226, 0.5);
 }
 
-
+#next-btn{
+    background-image: url("assets/668278_arrows_512x512.png");
+    height:160px;
+    width:160px;
+    background-repeat:no-repeat;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+}
 
 .second-window{
     background-color: transparent;
@@ -244,4 +256,6 @@ body{
     margin: 60px 0px 0px 0px;
     border: 5px;
     border-radius: 20px;
+    
 }
+
