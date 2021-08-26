@@ -290,8 +290,7 @@
       "type": "",
       "gender": "Female",
       "origin": {
-        "name": "Abadango",
-        "url": "https://rickandmortyapi.com/api/location/2"
+        "name": "Abadango"
       },
       "location": {
         "name": "Abadango",
@@ -302,7 +301,8 @@
         "https://rickandmortyapi.com/api/episode/27"
       ],
       "url": "https://rickandmortyapi.com/api/character/6",
-      "created": "2017-11-04T19:50:28.250Z"
+      "created": "2017-11-04T19:50:28.250Z",
+      "likes": "0"
     },
     {
       "id": 7,
@@ -3513,8 +3513,7 @@
       "type": "Gromflomite",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Galactic Federation Prison",
@@ -3525,7 +3524,8 @@
         "https://rickandmortyapi.com/api/episode/22"
       ],
       "url": "https://rickandmortyapi.com/api/character/150",
-      "created": "2017-12-29T12:02:33.550Z"
+      "created": "2017-12-29T12:02:33.550Z",
+      "likes": "0"
     },
     {
       "id": 151,
@@ -5330,8 +5330,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -14609,8 +14608,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Alien Acid Plant",
@@ -14621,7 +14619,8 @@
         "https://rickandmortyapi.com/api/episode/39"
       ],
       "url": "https://rickandmortyapi.com/api/character/648",
-      "created": "2020-08-13T10:09:21.278Z"
+      "created": "2020-08-13T10:09:21.278Z",
+      "likes": "0"
     },
     {
       "id": 649,

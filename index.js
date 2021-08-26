@@ -3,7 +3,9 @@ const BASE_URLP = "http://localhost:3000/characters"
 let characterResults = [];
 let randomNumberArray = [];
 let imageGalleryArray =[];
+let characterNameArray = []
 let click1 = true;
+// let bool =  false;
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
@@ -20,12 +22,12 @@ const likeDiv = document.querySelector("#like")
 const dislikeDiv = document.querySelector("#dislike")
 const likeCountDiv = document.querySelector("#like-counter")
 
-let characterNameArray = []
+
 init();
+
 function init(){
     //delayDataPull();
     getAllCharacters()
-    give8RandomNumbers()
     getGalleryCharacter()
     createSearchForm()
 }
@@ -37,11 +39,12 @@ function getAllCharacters(){
   .then(resp => resp.json())
   .then(data => {
     characterResults = data
-  }) 
+  })
+  return characterResults;
 }
-function give8RandomNumbers(){                  // WORKS
+function give8RandomNumbers(dataLength){
   for(let i = 0; i < 8; i++){
-      randomNumberArray.push(Math.floor(Math.random()*671))
+      randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
   }
   return randomNumberArray
 }
@@ -50,12 +53,12 @@ function getGalleryCharacter(){
     fetch(BASE_URLP)
     .then(resp => resp.json())
     .then(data => {
+        give8RandomNumbers(data.length)
         randomNumberArray.forEach(num => imageGalleryArray.push(data[num]))
         createGalleryImg()
   })
 }
 
-// console.log(imageGalleryArray)
 function createGalleryImg(){
     imageGalleryArray.forEach(image => {
         const imageG = document.createElement("img")
@@ -65,10 +68,10 @@ function createGalleryImg(){
         topGallery.childElementCount >= 4?  bottomGallery.append(imageG):topGallery.append(imageG)
         imageG.addEventListener("click", ()=> {
           clearGallery()
-          displaySelectCharacter(image)})
+          displaySelectCharacter(image)
+        })
     })
 }
-
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                      Search Bar                      ////\\////\\////\\////\\//
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -110,7 +113,6 @@ function createSearchForm(){
       }
       clearGallery()
       keyupSearch(searchSelectValue,category)
-      
       return click1 = true
 
     }
@@ -135,7 +137,6 @@ function keyupSearch(searchInputText,category){
     bottomGallery.textContent = ""
   }
   createGalleryImg()
- 
 }
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -163,13 +164,8 @@ function displaySelectCharacter(image){
     divTagInfo.append(spanTagInfo)
     characterInfo.append(divTagInfo)
   })
-  saveChanges()
-  likeDislike()
-}
-function saveChanges(){
-  const saveBtn = document.createElement("button")
-  saveBtn.textContent = "Save Changes"
-  updateDiv.append(saveBtn)
+  saveChanges(image)
+  likeDislike(image)
 }
 
 function clearGallery(){
@@ -188,23 +184,77 @@ function clearGallery(){
   }
 }
 
-function likeDislike(){
+function likeDislike(image){
   const likeBtn = document.createElement("button")
   const dislikeBtn = document.createElement("button")
   const likeCount = document.createElement("p")
   likeDiv.append(likeBtn)
   dislikeDiv.append(dislikeBtn)
   likeCountDiv.append(likeCount)
-  likeCount.textContent = 0
+  likeCount.textContent = image.likes
   likeBtn.addEventListener("click", () =>{
     let likeNum = parseInt(likeCount.textContent)
+    Number.isInteger(likeNum) === true? likeNum = parseInt(likeCount.textContent) : likeNum = 0
     likeCount.textContent = ++likeNum
   })
   dislikeBtn.addEventListener("click", () =>{
     let likeNum = parseInt(likeCount.textContent)
+    Number.isInteger(likeNum) === true? likeNum = parseInt(likeCount.textContent) : likeNum = 0
     likeCount.textContent = --likeNum
   })
 }
+
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+//\\////\\////\\////\\////                  Save Changes to DB                  ////\\////\\////\\////\\//
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+
+function saveChanges(selectedCharacter){
+  const saveBtn = document.createElement("button")
+  saveBtn.textContent = "Save Changes"
+  updateDiv.append(saveBtn)
+  saveBtn.addEventListener("click", ()=> {
+    let newName = document.querySelector(`#PTname${selectedCharacter.id}`)
+    let newStatus = document.querySelector(`#PTstatus${selectedCharacter.id}`)
+    let newSpecies = document.querySelector(`#PTspecies${selectedCharacter.id}`)
+    let newGender = document.querySelector(`#PTgender${selectedCharacter.id}`)
+    let newOrigin = document.querySelector(`#PTorigin${selectedCharacter.id}`)
+    let newLikeCount = document.querySelector(`#like-counter p`).textContent  
+    let updateData = {
+      "id": `${selectedCharacter.id}`,
+      "name": `${newName.textContent}`,
+      "status": `${newStatus.textContent}`,
+      "species": `${newSpecies.textContent}`,
+      "gender": `${newGender.textContent}`,
+      "origin": {
+        "name": `${newOrigin.textContent}`
+      },
+      "likes": newLikeCount
+    }
+    patchToDB(updateData)
+  })
+}
+
+
+function patchToDB(updateData) {
+  fetch(`${BASE_URLP}/${updateData.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(updateData)
+  })
+    .then((resp) => resp.json())
+    .then((data) => data.votes);
+}
+
+// function getUpdatedInfo(){
+//   if (bool === false){
+//     getAllCharacters()
+//     console.log(bool)
+//   }else{
+//     console.log(bool)
+//   }
+// }
 
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -238,90 +288,3 @@ function likeDislike(){
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
-// function displayCharacter(randomNum){
-//     console.log(characterResult[0])
-//     console.log(randomNum)
-// }
-    // give8RandomNumbers()                      // WORKS
-    //getAllCharacters()                        // WORKS
-    // displayCharacter()
-    // intialNumPagePull()
-    // getMissingCharacters()
-// // make an randomizer to give us numbers between 1 to 671 to get ids
-// //with the ids we results[${idfromrandomizer}]
-// //create empty array tho shove in all results for that id
-// //array.image into a for loop to store
-// //then make img tags with a loop to place each url into the image.src
-// //give img src style so that the boxes are limited to a size
-//look into our database and pull all ids and put in array
-// function addToDB(addData) {
-//     fetch(BASE_URLP, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(addData)
-//     })
-//       .then(resp => resp.json())
-//       .then(data => data)
-//   }
-// function getAllCharacters(){                   // WORKS
-//     fetch(BASE_URLP)
-//     .then(resp => resp.json())
-//     .then(data => {
-//         console.log(randomNumberArray)
-//         randomNumberArray.forEach(element => imgIDCharacterImageGallery.push(data[element]))
-//         console.log(data)
-//         console.log(imgIDCharacterImageGallery)
-//     })
-// }
-// function getMissingCharacters() {
-//   fetch(BASE_URLP)
-//     .then((resp) => resp.json())
-//     .then((data) => {
-//         forLoop(data)
-//     });
-// }
-// function forLoop(data){
-//   let num = data.length
-//   for (let i = 0; i < num; i++){  
-//       characterResults.push(data[i].id)
-//   }
-//   newGetRequstforMissingChars(characterResults)
-// }
-// let saveIDsToGet = []
-// function newGetRequstforMissingChars(characterResults){
-//   characterResults.forEach(element => { 
-//    for(let i = 1; i < 671; i++){
-//     if(i !== element){
-//       saveIDsToGet.push(i)
-//     }}
-//   })
-// }
-
-///// Replece by powerful keyup/////
-
-// function displaySearchResult (searchInputText){
-//     console.log(searchInputText)
-//     for(let i=0;i<671;i++){
-//       characterNameArray.push(characterResults[0][i].name)
-//     }
-//     console.log(characterNameArray)
-
- 
-//   characterNameArray.filter(name => {
-//     if(name === searchInputText){
-//       // console.log(characterNameArray.includes(searchInputText))
-//       console.log(characterNameArray.indexOf(searchInputText))
-//     }
-  
-//   })
-
-  //   characterNameArray.filter(name => {
-
-  //     if(searchInputText.value === name){
-  //       console.log("true")
-  //       const indexFoundAt = characterNameArray.indexOf(element => console.log())
-  //       console.log(indexFoundAt)
-  //     }
-  //  })
