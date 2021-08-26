@@ -30,6 +30,7 @@ body{
     font-size: 58px;
     font-family: Rockwell;
     white-space: nowrap;
+    color: lightgrey;
 }
 
 @media only screen and (max-width: 795px) {
