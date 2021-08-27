@@ -110,7 +110,6 @@ function createSearchForm(){
   ///// ignore first click of the searchSelect Dropdown
   searchSelect.addEventListener("click", ()=> {
     if(click1 === true) {
-      resetSearchBar()
        click1 = false
     } 
     else{
@@ -150,7 +149,7 @@ function keyupSearch(searchInputText, categoryC){
       return element.name.toLowerCase().includes(string)
     } else if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
       return element[`${categoryC}`].toLowerCase().includes(string)
-    } 
+    }
   })
   
   imageGalleryArray = searchInput.slice(0,8)
