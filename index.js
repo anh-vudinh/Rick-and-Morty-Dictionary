@@ -5,6 +5,8 @@ let randomNumberArray = [];
 let imageGalleryArray =[];
 let characterNameArray = []
 let click1 = true;
+let category = "status";
+let searchSelectValue = "Alive";
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
@@ -108,11 +110,11 @@ function createSearchForm(){
   ///// ignore first click of the searchSelect Dropdown
   searchSelect.addEventListener("click", ()=> {
     if(click1 === true) {
+      resetSearchBar()
        click1 = false
     } 
     else{
-      let category;
-      let searchSelectValue = searchSelect.value;
+      searchSelectValue = searchSelect.value;
       if(searchSelect.value === "Alive"||searchSelect.value === "Dead"||searchSelect.value === "Unknown Status"){
         category = "status"
         if(searchSelectValue === "Unknown Status"){
@@ -129,7 +131,7 @@ function createSearchForm(){
         category = "species"
       }
       clearGallery()
-      keyupSearch(searchSelectValue,category)
+      keyupSearch(searchSelectValue, category)
       return click1 = true
     }
 
@@ -137,15 +139,16 @@ function createSearchForm(){
   //// eventlistener for the searchInputText.value
   searchInputText.addEventListener("keyup", () =>{
     clearGallery()
-    keyupSearch(searchInputText.value,"name")
+    keyupSearch(searchInputText.value, "name")
   })
 }
 
-function keyupSearch(searchInputText,category){
-  //getAllCharacters();//get new data should go here to update character Results
+function keyupSearch(searchInputText, categoryC){
   const string = searchInputText.toLowerCase()
   const searchInput = characterResults.filter((element) => {
-  return element[`${category}`].toLowerCase().includes(string)     
+    if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
+      return element[`${categoryC}`].toLowerCase().includes(string)
+    }
   })
   
   imageGalleryArray = searchInput.slice(0,8)
@@ -157,6 +160,8 @@ function keyupSearch(searchInputText,category){
 }
 
 function resetSearchBar(){
+  // category = "status";
+  // searchSelectValue = "Alive";
   searchForm.reset()
 }
 
