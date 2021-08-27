@@ -6,7 +6,7 @@ let imageGalleryArray =[];
 let characterNameArray = []
 let click1 = true;
 let category = "status";
-let searchSelectValue = "Alive";
+let searchSelectValue = "-";
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
@@ -14,7 +14,7 @@ const bottomGallery = document.querySelector("#bottom-gallery")
 const searchForm =document.createElement("form")
 const characterSearchDiv = document.querySelector("#character-search")
 const searchSelect = document.createElement("select")
-const searchSelectArray = ["Alive","Dead","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
+const searchSelectArray = ["-","Alive","Dead","Unknown Status","Male","Female","Unknown Gender","Human","Mythological Creature","Alien"]
 const characterImg = document.querySelector("#character-img")
 const characterInfo = document.querySelector("#character-info")
 const searchInputText = document.createElement("input")
@@ -148,6 +148,8 @@ function keyupSearch(searchInputText, categoryC){
   const searchInput = characterResults.filter((element) => {
     if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
       return element[`${categoryC}`].toLowerCase().includes(string)
+    } else if(searchSelectValue.toLowerCase() === "-"){
+      return element.name.toLowerCase().includes(string)
     }
   })
   
