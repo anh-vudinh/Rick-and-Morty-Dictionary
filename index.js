@@ -48,7 +48,7 @@ function getAllCharacters(){
 }
 function give8RandomNumbers(dataLength){
   for(let i = 0; i < 8; i++){
-      randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
+     randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
   }
   return randomNumberArray
 }
@@ -146,11 +146,11 @@ function createSearchForm(){
 function keyupSearch(searchInputText, categoryC){
   const string = searchInputText.toLowerCase()
   const searchInput = characterResults.filter((element) => {
-    if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
-      return element[`${categoryC}`].toLowerCase().includes(string)
-    } else if(searchSelectValue.toLowerCase() === "-"){
+    if(searchSelectValue.toLowerCase() === "-"){
       return element.name.toLowerCase().includes(string)
-    }
+    } else if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
+      return element[`${categoryC}`].toLowerCase().includes(string)
+    } 
   })
   
   imageGalleryArray = searchInput.slice(0,8)
@@ -162,8 +162,6 @@ function keyupSearch(searchInputText, categoryC){
 }
 
 function resetSearchBar(){
-  // category = "status";
-  // searchSelectValue = "Alive";
   searchForm.reset()
 }
 
@@ -287,7 +285,7 @@ function updateCharacterResultsArray(updateData){
   intUpdateDataID = parseInt(updateData.id)
   for(i=0; i < characterResults.length; i++){
     if(characterResults[i].id === intUpdateDataID){
-      characterResults.splice(i,1,updateData)
+      return characterResults.splice(i,1,updateData);
     }
   }
 }
