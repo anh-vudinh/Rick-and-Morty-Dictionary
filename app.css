@@ -1,15 +1,29 @@
 body{
     position: relative;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     background-image: url('assets/mainBackground.png');
     background-size: cover;
+    background-repeat: no-repeat;
 }
+
+@media only screen and (max-width: 1640px) {
+    body{
+        background-image: url('assets/mainBackgroundMid.png');
+    }
+}
+
+@media only screen and (max-width: 1120px) {
+    body{
+        background-image: url('assets/mainBackgroundShrink.png');
+    }
+}
+
 
 #header{
     position: absolute;
     padding-top: 4vh;
-    padding-bottom: 3vh;
+    padding-bottom: 3vh; 
     text-align: center;
     align-content: center;
     justify-content: center;
@@ -17,7 +31,7 @@ body{
     background-image: url('assets/top-banner-two-1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    opacity: 0.75;
+    background-color: rgba(0, 35, 122, 0.56);
 }
 
 @media only screen and (max-width: 795px) {

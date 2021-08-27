@@ -8,8 +8,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
+        "name": "Earth (C-137)"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -60,7 +59,8 @@
         "https://rickandmortyapi.com/api/episode/41"
       ],
       "url": "https://rickandmortyapi.com/api/character/1",
-      "created": "2017-11-04T18:48:46.250Z"
+      "created": "2017-11-04T18:48:46.250Z",
+      "likes": "-1"
     },
     {
       "id": 2,
@@ -445,8 +445,7 @@
       "type": "",
       "gender": "unknown",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -457,7 +456,8 @@
         "https://rickandmortyapi.com/api/episode/31"
       ],
       "url": "https://rickandmortyapi.com/api/character/13",
-      "created": "2017-11-04T20:33:30.779Z"
+      "created": "2017-11-04T20:33:30.779Z",
+      "likes": ""
     },
     {
       "id": 14,
@@ -896,8 +896,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Venzenulon 7",
-        "url": "https://rickandmortyapi.com/api/location/10"
+        "name": "Venzenulon 7"
       },
       "location": {
         "name": "Venzenulon 7",
@@ -908,7 +907,8 @@
         "https://rickandmortyapi.com/api/episode/29"
       ],
       "url": "https://rickandmortyapi.com/api/character/33",
-      "created": "2017-11-05T09:21:55.595Z"
+      "created": "2017-11-05T09:21:55.595Z",
+      "likes": ""
     },
     {
       "id": 34,
@@ -1193,8 +1193,7 @@
       "type": "Dog",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
+        "name": "Earth (Replacement Dimension)"
       },
       "location": {
         "name": "unknown",
@@ -1205,7 +1204,8 @@
         "https://rickandmortyapi.com/api/episode/2"
       ],
       "url": "https://rickandmortyapi.com/api/character/46",
-      "created": "2017-11-05T10:24:38.089Z"
+      "created": "2017-11-05T10:24:38.089Z",
+      "likes": ""
     },
     {
       "id": 47,
@@ -1330,8 +1330,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Post-Apocalyptic Earth",
-        "url": "https://rickandmortyapi.com/api/location/8"
+        "name": "Post-Apocalyptic Earth"
       },
       "location": {
         "name": "Post-Apocalyptic Earth",
@@ -1342,7 +1341,8 @@
         "https://rickandmortyapi.com/api/episode/23"
       ],
       "url": "https://rickandmortyapi.com/api/character/52",
-      "created": "2017-11-05T11:26:42.084Z"
+      "created": "2017-11-05T11:26:42.084Z",
+      "likes": ""
     },
     {
       "id": 53,
@@ -2355,8 +2355,7 @@
       "type": "",
       "gender": "unknown",
       "origin": {
-        "name": "Anatomy Park",
-        "url": "https://rickandmortyapi.com/api/location/5"
+        "name": "Anatomy Park"
       },
       "location": {
         "name": "Anatomy Park",
@@ -2367,7 +2366,8 @@
         "https://rickandmortyapi.com/api/episode/3"
       ],
       "url": "https://rickandmortyapi.com/api/character/98",
-      "created": "2017-12-01T12:01:43.742Z"
+      "created": "2017-12-01T12:01:43.742Z",
+      "likes": ""
     },
     {
       "id": 99,
@@ -2377,8 +2377,7 @@
       "type": "",
       "gender": "unknown",
       "origin": {
-        "name": "Anatomy Park",
-        "url": "https://rickandmortyapi.com/api/location/5"
+        "name": "Anatomy Park"
       },
       "location": {
         "name": "Anatomy Park",
@@ -2389,7 +2388,8 @@
         "https://rickandmortyapi.com/api/episode/3"
       ],
       "url": "https://rickandmortyapi.com/api/character/99",
-      "created": "2017-12-01T12:02:00.935Z"
+      "created": "2017-12-01T12:02:00.935Z",
+      "likes": ""
     },
     {
       "id": 100,
@@ -2643,8 +2643,7 @@
       "type": "",
       "gender": "Female",
       "origin": {
-        "name": "Post-Apocalyptic Earth",
-        "url": "https://rickandmortyapi.com/api/location/8"
+        "name": "Post-Apocalyptic Earth"
       },
       "location": {
         "name": "Post-Apocalyptic Earth",
@@ -2655,7 +2654,8 @@
         "https://rickandmortyapi.com/api/episode/23"
       ],
       "url": "https://rickandmortyapi.com/api/character/111",
-      "created": "2017-12-26T13:38:47.115Z"
+      "created": "2017-12-26T13:38:47.115Z",
+      "likes": ""
     },
     {
       "id": 112,
@@ -4022,8 +4022,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Interdimensional Cable",
@@ -4034,7 +4033,8 @@
         "https://rickandmortyapi.com/api/episode/19"
       ],
       "url": "https://rickandmortyapi.com/api/character/173",
-      "created": "2017-12-29T17:33:23.972Z"
+      "created": "2017-12-29T17:33:23.972Z",
+      "likes": ""
     },
     {
       "id": 174,
@@ -5022,8 +5022,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
+        "name": "Earth (Replacement Dimension)"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -5034,7 +5033,8 @@
         "https://rickandmortyapi.com/api/episode/23"
       ],
       "url": "https://rickandmortyapi.com/api/character/217",
-      "created": "2017-12-30T14:32:17.158Z"
+      "created": "2017-12-30T14:32:17.158Z",
+      "likes": ""
     },
     {
       "id": 218,
@@ -6515,8 +6515,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -6527,7 +6526,8 @@
         "https://rickandmortyapi.com/api/episode/28"
       ],
       "url": "https://rickandmortyapi.com/api/character/283",
-      "created": "2017-12-31T19:23:53.188Z"
+      "created": "2017-12-31T19:23:53.188Z",
+      "likes": ""
     },
     {
       "id": 284,
@@ -6758,8 +6758,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -6771,7 +6770,8 @@
         "https://rickandmortyapi.com/api/episode/22"
       ],
       "url": "https://rickandmortyapi.com/api/character/294",
-      "created": "2017-12-31T20:24:30.396Z"
+      "created": "2017-12-31T20:24:30.396Z",
+      "likes": "-1"
     },
     {
       "id": 295,
@@ -7003,8 +7003,7 @@
       "type": "Monster",
       "gender": "Male",
       "origin": {
-        "name": "Mr. Goldenfold's dream",
-        "url": "https://rickandmortyapi.com/api/location/18"
+        "name": "Mr. Goldenfold's dream"
       },
       "location": {
         "name": "Mr. Goldenfold's dream",
@@ -7015,7 +7014,8 @@
         "https://rickandmortyapi.com/api/episode/2"
       ],
       "url": "https://rickandmortyapi.com/api/character/305",
-      "created": "2018-01-05T14:11:53.287Z"
+      "created": "2018-01-05T14:11:53.287Z",
+      "likes": ""
     },
     {
       "id": 306,
@@ -7799,8 +7799,7 @@
       "type": "Superhuman",
       "gender": "Female",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Worldender's lair",
@@ -7811,7 +7810,8 @@
         "https://rickandmortyapi.com/api/episode/25"
       ],
       "url": "https://rickandmortyapi.com/api/character/340",
-      "created": "2018-01-10T17:02:58.042Z"
+      "created": "2018-01-10T17:02:58.042Z",
+      "likes": ""
     },
     {
       "id": 341,
@@ -7981,8 +7981,7 @@
       "type": "Miniverse inhabitant",
       "gender": "Male",
       "origin": {
-        "name": "Zeep Xanflorp's Miniverse",
-        "url": "https://rickandmortyapi.com/api/location/49"
+        "name": "Zeep Xanflorp's Miniverse"
       },
       "location": {
         "name": "Zeep Xanflorp's Miniverse",
@@ -7993,7 +7992,8 @@
         "https://rickandmortyapi.com/api/episode/17"
       ],
       "url": "https://rickandmortyapi.com/api/character/348",
-      "created": "2018-01-10T17:47:59.043Z"
+      "created": "2018-01-10T17:47:59.043Z",
+      "likes": ""
     },
     {
       "id": 349,
@@ -8408,8 +8408,7 @@
       "type": "Trunk-Person",
       "gender": "Male",
       "origin": {
-        "name": "Trunk World",
-        "url": "https://rickandmortyapi.com/api/location/65"
+        "name": "Trunk World"
       },
       "location": {
         "name": "Interdimensional Cable",
@@ -8421,7 +8420,8 @@
         "https://rickandmortyapi.com/api/episode/28"
       ],
       "url": "https://rickandmortyapi.com/api/character/367",
-      "created": "2018-01-10T19:05:34.004Z"
+      "created": "2018-01-10T19:05:34.004Z",
+      "likes": ""
     },
     {
       "id": 368,
@@ -8761,8 +8761,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "St. Gloopy Noops Hospital",
@@ -8773,7 +8772,8 @@
         "https://rickandmortyapi.com/api/episode/19"
       ],
       "url": "https://rickandmortyapi.com/api/character/383",
-      "created": "2018-01-10T19:48:59.952Z"
+      "created": "2018-01-10T19:48:59.952Z",
+      "likes": ""
     },
     {
       "id": 384,
@@ -9343,8 +9343,7 @@
       "type": "Little Human",
       "gender": "Male",
       "origin": {
-        "name": "Interdimensional Cable",
-        "url": "https://rickandmortyapi.com/api/location/6"
+        "name": "Interdimensional Cable"
       },
       "location": {
         "name": "Interdimensional Cable",
@@ -9355,7 +9354,8 @@
         "https://rickandmortyapi.com/api/episode/8"
       ],
       "url": "https://rickandmortyapi.com/api/character/409",
-      "created": "2018-04-15T21:04:09.405Z"
+      "created": "2018-04-15T21:04:09.405Z",
+      "likes": ""
     },
     {
       "id": 410,
@@ -9673,8 +9673,7 @@
       "type": "Pizza",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Pizza Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/71"
+        "name": "Earth (Pizza Dimension)"
       },
       "location": {
         "name": "Earth (Pizza Dimension)",
@@ -9685,7 +9684,8 @@
         "https://rickandmortyapi.com/api/episode/10"
       ],
       "url": "https://rickandmortyapi.com/api/character/424",
-      "created": "2018-04-16T21:45:55.310Z"
+      "created": "2018-04-16T21:45:55.310Z",
+      "likes": ""
     },
     {
       "id": 425,
@@ -9695,8 +9695,7 @@
       "type": "Pizza",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Pizza Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/71"
+        "name": "Earth (Pizza Dimension)"
       },
       "location": {
         "name": "Earth (Pizza Dimension)",
@@ -9707,7 +9706,8 @@
         "https://rickandmortyapi.com/api/episode/10"
       ],
       "url": "https://rickandmortyapi.com/api/character/425",
-      "created": "2018-04-16T21:46:18.362Z"
+      "created": "2018-04-16T21:46:18.362Z",
+      "likes": "-1"
     },
     {
       "id": 426,
@@ -10271,8 +10271,7 @@
       "type": "Game",
       "gender": "Male",
       "origin": {
-        "name": "Roy: A Life Well Lived",
-        "url": "https://rickandmortyapi.com/api/location/32"
+        "name": "Roy: A Life Well Lived"
       },
       "location": {
         "name": "Roy: A Life Well Lived",
@@ -10283,7 +10282,8 @@
         "https://rickandmortyapi.com/api/episode/13"
       ],
       "url": "https://rickandmortyapi.com/api/character/451",
-      "created": "2018-05-01T13:59:18.964Z"
+      "created": "2018-05-01T13:59:18.964Z",
+      "likes": ""
     },
     {
       "id": 452,
@@ -10383,8 +10383,7 @@
       "type": "Nano Alien",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "St. Gloopy Noops Hospital",
@@ -10395,7 +10394,8 @@
         "https://rickandmortyapi.com/api/episode/19"
       ],
       "url": "https://rickandmortyapi.com/api/character/456",
-      "created": "2018-05-01T15:42:07.919Z"
+      "created": "2018-05-01T15:42:07.919Z",
+      "likes": ""
     },
     {
       "id": 457,
@@ -10405,8 +10405,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Interdimensional Cable",
@@ -10417,7 +10416,8 @@
         "https://rickandmortyapi.com/api/episode/19"
       ],
       "url": "https://rickandmortyapi.com/api/character/457",
-      "created": "2018-05-01T16:08:23.458Z"
+      "created": "2018-05-01T16:08:23.458Z",
+      "likes": ""
     },
     {
       "id": 458,
@@ -11505,8 +11505,7 @@
       "type": "Teddy Bear",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Fascist Teddy Bear Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/81"
+        "name": "Earth (Fascist Teddy Bear Dimension)"
       },
       "location": {
         "name": "Earth (Fascist Teddy Bear Dimension)",
@@ -11517,7 +11516,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/507",
-      "created": "2020-05-02T12:18:23.346Z"
+      "created": "2020-05-02T12:18:23.346Z",
+      "likes": ""
     },
     {
       "id": 508,
@@ -11527,8 +11527,7 @@
       "type": "Teddy Bear",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Fascist Teddy Bear Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/81"
+        "name": "Earth (Fascist Teddy Bear Dimension)"
       },
       "location": {
         "name": "Earth (Fascist Teddy Bear Dimension)",
@@ -11539,7 +11538,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/508",
-      "created": "2020-05-02T12:20:28.005Z"
+      "created": "2020-05-02T12:20:28.005Z",
+      "likes": ""
     },
     {
       "id": 509,
@@ -11879,8 +11879,7 @@
       "type": "Meeseeks",
       "gender": "Male",
       "origin": {
-        "name": "Mr. Meeseeks Box",
-        "url": "https://rickandmortyapi.com/api/location/53"
+        "name": "Mr. Meeseeks Box"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -11891,7 +11890,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/524",
-      "created": "2020-05-02T12:52:58.134Z"
+      "created": "2020-05-02T12:52:58.134Z",
+      "likes": ""
     },
     {
       "id": 525,
@@ -11967,8 +11967,7 @@
       "type": "Monogatron",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Monogatron Mothership",
@@ -11979,7 +11978,8 @@
         "https://rickandmortyapi.com/api/episode/33"
       ],
       "url": "https://rickandmortyapi.com/api/character/528",
-      "created": "2020-05-02T13:27:50.476Z"
+      "created": "2020-05-02T13:27:50.476Z",
+      "likes": ""
     },
     {
       "id": 529,
@@ -12055,8 +12055,7 @@
       "type": "",
       "gender": "Female",
       "origin": {
-        "name": "Globaflyn",
-        "url": "https://rickandmortyapi.com/api/location/87"
+        "name": "Globaflyn"
       },
       "location": {
         "name": "Globaflyn",
@@ -12067,7 +12066,8 @@
         "https://rickandmortyapi.com/api/episode/33"
       ],
       "url": "https://rickandmortyapi.com/api/character/532",
-      "created": "2020-05-02T13:45:32.092Z"
+      "created": "2020-05-02T13:45:32.092Z",
+      "likes": ""
     },
     {
       "id": 533,
@@ -12517,8 +12517,7 @@
       "type": "Shapeshifter",
       "gender": "Female",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Heist-Con",
@@ -12529,7 +12528,8 @@
         "https://rickandmortyapi.com/api/episode/34"
       ],
       "url": "https://rickandmortyapi.com/api/character/553",
-      "created": "2020-05-07T10:10:37.809Z"
+      "created": "2020-05-07T10:10:37.809Z",
+      "likes": ""
     },
     {
       "id": 554,
@@ -13023,8 +13023,7 @@
       "type": "Snake",
       "gender": "Male",
       "origin": {
-        "name": "Snake Planet",
-        "url": "https://rickandmortyapi.com/api/location/78"
+        "name": "Snake Planet"
       },
       "location": {
         "name": "Snake Planet",
@@ -13035,7 +13034,8 @@
         "https://rickandmortyapi.com/api/episode/36"
       ],
       "url": "https://rickandmortyapi.com/api/character/576",
-      "created": "2020-05-07T12:16:53.781Z"
+      "created": "2020-05-07T12:16:53.781Z",
+      "likes": ""
     },
     {
       "id": 577,
@@ -14168,8 +14168,7 @@
       "type": "Soulless Puppet",
       "gender": "Female",
       "origin": {
-        "name": "Morty’s Story",
-        "url": "https://rickandmortyapi.com/api/location/99"
+        "name": "Morty’s Story"
       },
       "location": {
         "name": "Morty’s Story",
@@ -14180,7 +14179,8 @@
         "https://rickandmortyapi.com/api/episode/37"
       ],
       "url": "https://rickandmortyapi.com/api/character/628",
-      "created": "2020-08-06T16:36:20.255Z"
+      "created": "2020-08-06T16:36:20.255Z",
+      "likes": ""
     },
     {
       "id": 629,
@@ -14620,7 +14620,7 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/648",
       "created": "2020-08-13T10:09:21.278Z",
-      "likes": "0"
+      "likes": "2"
     },
     {
       "id": 649,
@@ -14916,8 +14916,7 @@
       "type": "",
       "gender": "Female",
       "origin": {
-        "name": "Gaia",
-        "url": "https://rickandmortyapi.com/api/location/106"
+        "name": "Gaia"
       },
       "location": {
         "name": "Gaia",
@@ -14928,7 +14927,8 @@
         "https://rickandmortyapi.com/api/episode/40"
       ],
       "url": "https://rickandmortyapi.com/api/character/662",
-      "created": "2020-08-13T11:43:23.485Z"
+      "created": "2020-08-13T11:43:23.485Z",
+      "likes": ""
     },
     {
       "id": 663,
@@ -15092,8 +15092,7 @@
       "type": "Gromflomite",
       "gender": "Male",
       "origin": {
-        "name": "Gromflom Prime",
-        "url": "https://rickandmortyapi.com/api/location/19"
+        "name": "Gromflom Prime"
       },
       "location": {
         "name": "NX-5 Planet Remover",
@@ -15104,7 +15103,8 @@
         "https://rickandmortyapi.com/api/episode/41"
       ],
       "url": "https://rickandmortyapi.com/api/character/670",
-      "created": "2020-08-13T12:56:31.130Z"
+      "created": "2020-08-13T12:56:31.130Z",
+      "likes": ""
     },
     {
       "id": 671,

@@ -5,7 +5,6 @@ let randomNumberArray = [];
 let imageGalleryArray =[];
 let characterNameArray = []
 let click1 = true;
-// let bool =  false;
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
@@ -48,7 +47,6 @@ function getAllCharacters(){
 function give8RandomNumbers(dataLength){
   for(let i = 0; i < 8; i++){
       randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
-      
   }
   return randomNumberArray
 }
@@ -72,6 +70,7 @@ function createGalleryImg(){
         imageG.id =`ig${image.id}`
         topGallery.childElementCount >= 4?  bottomGallery.append(imageG):topGallery.append(imageG)
         imageG.addEventListener("click", ()=> {
+          resetSearchBar()
           clearGallery()
           displaySelectCharacter(image)
         })
@@ -85,7 +84,6 @@ function nextBtnSearch(){
     randomNumberArray = []
     topGallery.textContent = ""
     bottomGallery.textContent = ""
-    console.log(randomNumberArray)
     getGalleryCharacter()
   })
   
@@ -133,7 +131,6 @@ function createSearchForm(){
       clearGallery()
       keyupSearch(searchSelectValue,category)
       return click1 = true
-
     }
 
   })
@@ -145,6 +142,7 @@ function createSearchForm(){
 }
 
 function keyupSearch(searchInputText,category){
+  //getAllCharacters();//get new data should go here to update character Results
   const string = searchInputText.toLowerCase()
   const searchInput = characterResults.filter((element) => {
   return element[`${category}`].toLowerCase().includes(string)     
@@ -156,6 +154,10 @@ function keyupSearch(searchInputText,category){
     bottomGallery.textContent = ""
   }
   createGalleryImg()
+}
+
+function resetSearchBar(){
+  searchForm.reset()
 }
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -194,6 +196,7 @@ function clearGallery(){
     bottomGallery.textContent =""
   }
   else{
+    getAllCharacters()
     characterImg.textContent =""
     characterInfo.textContent =""
     searchDisplay.style.backgroundColor = "transparent"
@@ -249,13 +252,13 @@ function saveChanges(selectedCharacter){
       "status": `${newStatus.textContent}`,
       "species": `${newSpecies.textContent}`,
       "gender": `${newGender.textContent}`,
+      "image": `${selectedCharacter.image}`,
       "origin": {
         "name": `${newOrigin.textContent}`
       },
       "likes": newLikeCount
     }
     patchToDB(updateData)
-    
   })
 }
 
@@ -269,25 +272,25 @@ function patchToDB(updateData) {
     body: JSON.stringify(updateData)
   })
     .then((resp) => resp.json())
-    .then((data) => data.votes);
+    .then((data) => data.votes)
+  updateCharacterResultsArray(updateData)
 }
 
-// function getUpdatedInfo(){
-//   if (bool === false){
-//     getAllCharacters()
-//     console.log(bool)
-//   }else{
-//     console.log(bool)
-//   }
-// }
-
+function updateCharacterResultsArray(updateData){
+  intUpdateDataID = parseInt(updateData.id)
+  for(i=0; i < characterResults.length; i++){
+    if(characterResults[i].id === intUpdateDataID){
+      characterResults.splice(i,1,updateData)
+    }
+  }
+}
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                Original DATAPULL FROM API            ////\\////\\////\\////\\//
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 // async function delayDataPull(){
 //   for (let i = 1; i < 671; i++) {
-//     await sleep(2000)
+//     await sleep(1000)
 //     getData(i)
 //   }
 // }
