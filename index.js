@@ -34,7 +34,6 @@ function init(){
     getAllCharacters()
     getGalleryCharacter()
     createSearchForm()
-    nextBtnSearch()
 }
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                 Populating Image Gallery             ////\\////\\////\\////\\//
@@ -80,16 +79,18 @@ function createGalleryImg(){
     })
 }
 
-function nextBtnSearch(){
+function nextBtnSearch(currentSearchArray){
   nextBtn.id = "next-btn"
   browseDiv.append(nextBtn)
+  let counterNextIndex = 8;
+
   nextBtn.addEventListener("click", () => {
-    randomNumberArray = []
     topGallery.textContent = ""
     bottomGallery.textContent = ""
-    getGalleryCharacter()
+    counterNextIndex += 8
+    imageGalleryArray = currentSearchArray.slice(counterNextIndex-8,counterNextIndex)
+    createGalleryImg()
   })
-  
 }
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -150,13 +151,13 @@ function keyupSearch(searchInputText, categoryC){
       return element[`${categoryC}`].toLowerCase().includes(string)
     }
   })
-  
   imageGalleryArray = searchInput.slice(0,8)
   if(topGallery.childElementCount > 0){
     topGallery.textContent = ""
     bottomGallery.textContent = ""
   }
   createGalleryImg()
+  nextBtnSearch(searchInput)
 }
 
 function resetSearchBar(){
