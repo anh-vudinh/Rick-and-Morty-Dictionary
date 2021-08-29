@@ -129,11 +129,12 @@ function createSearchForm(){
       if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
         category = "species"
       }
+      if(searchSelect.value === "-"){
+        searchSelectValue = ""}
       clearGallery()
       keyupSearch(searchSelectValue, category)
       return click1 = true
     }
-
   })
   //// eventlistener for the searchInputText.value
   searchInputText.addEventListener("keyup", () =>{
@@ -145,10 +146,12 @@ function createSearchForm(){
 function keyupSearch(searchInputText, categoryC){
   const string = searchInputText.toLowerCase()
   const searchInput = characterResults.filter((element) => {
-    if(searchSelectValue.toLowerCase() === "-"){
+    if(searchInputText === ""){
       return element.name.toLowerCase().includes(string)
     } else if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
       return element[`${categoryC}`].toLowerCase().includes(string)
+    }else {
+      return element.name.toLowerCase().includes(string)
     }
   })
   imageGalleryArray = searchInput.slice(0,8)
