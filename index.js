@@ -26,6 +26,7 @@ const searchDisplay = document.querySelector("#search-result")
 const userInputDiv = document.querySelector("#user-input")
 const nextBtn = document.createElement("button")
 const characterContainer = document.querySelector("#character-container")
+const browseDiv = document.querySelector("#browseNextGallery")
 init();
 
 function init(){
@@ -81,7 +82,7 @@ function createGalleryImg(){
 
 function nextBtnSearch(){
   nextBtn.id = "next-btn"
-  characterContainer.append(nextBtn)
+  browseDiv.append(nextBtn)
   nextBtn.addEventListener("click", () => {
     randomNumberArray = []
     topGallery.textContent = ""
@@ -117,14 +118,12 @@ function createSearchForm(){
       if(searchSelect.value === "Alive"||searchSelect.value === "Dead"||searchSelect.value === "Unknown Status"){
         category = "status"
         if(searchSelectValue === "Unknown Status"){
-          searchSelectValue = "unknown"
-        }
+          searchSelectValue = "unknown"}
       }
       if(searchSelect.value === "Male"||searchSelect.value === "Female"||searchSelect.value === "Unknown Gender"){
       category = "gender"
         if(searchSelectValue === "Unknown Gender"){
-         searchSelectValue = "unknown"
-        }
+         searchSelectValue = "unknown"}
       }
       if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
         category = "species"

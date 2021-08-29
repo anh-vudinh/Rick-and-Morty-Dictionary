@@ -70,8 +70,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
+        "name": "Earth (C-137)"
       },
       "location": {
         "name": "Earth (Replacement Dimension)",
@@ -122,7 +121,8 @@
         "https://rickandmortyapi.com/api/episode/41"
       ],
       "url": "https://rickandmortyapi.com/api/character/2",
-      "created": "2017-11-04T18:50:21.651Z"
+      "created": "2017-11-04T18:50:21.651Z",
+      "likes": "1"
     },
     {
       "id": 3,
@@ -467,8 +467,7 @@
       "type": "",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -479,7 +478,8 @@
         "https://rickandmortyapi.com/api/episode/10"
       ],
       "url": "https://rickandmortyapi.com/api/character/14",
-      "created": "2017-11-04T20:51:31.373Z"
+      "created": "2017-11-04T20:51:31.373Z",
+      "likes": "6"
     },
     {
       "id": 15,
@@ -2245,8 +2245,7 @@
       "type": "Demon",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Dorian 5",
@@ -2257,7 +2256,8 @@
         "https://rickandmortyapi.com/api/episode/25"
       ],
       "url": "https://rickandmortyapi.com/api/character/93",
-      "created": "2017-12-01T11:36:16.467Z"
+      "created": "2017-12-01T11:36:16.467Z",
+      "likes": "6"
     },
     {
       "id": 94,
@@ -2283,14 +2283,13 @@
     },
     {
       "id": 95,
-      "name": "Dipper and Mabel Mortys",
-      "status": "unknown",
+      "name": "Mabel Mortys",
+      "status": "unknownL",
       "species": "Human",
       "type": "",
       "gender": "unknown",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Citadel of Ricks",
@@ -2301,7 +2300,8 @@
         "https://rickandmortyapi.com/api/episode/22"
       ],
       "url": "https://rickandmortyapi.com/api/character/95",
-      "created": "2017-12-01T11:54:36.670Z"
+      "created": "2017-12-01T11:54:36.670Z",
+      "likes": "5"
     },
     {
       "id": 96,
@@ -3090,8 +3090,7 @@
       "type": "Zombodian",
       "gender": "Male",
       "origin": {
-        "name": "unknown",
-        "url": ""
+        "name": "unknown"
       },
       "location": {
         "name": "Nuptia 4",
@@ -3104,7 +3103,8 @@
         "https://rickandmortyapi.com/api/episode/21"
       ],
       "url": "https://rickandmortyapi.com/api/character/131",
-      "created": "2017-12-26T19:54:43.476Z"
+      "created": "2017-12-26T19:54:43.476Z",
+      "likes": "0"
     },
     {
       "id": 132,
@@ -6527,7 +6527,7 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/283",
       "created": "2017-12-31T19:23:53.188Z",
-      "likes": ""
+      "likes": "0"
     },
     {
       "id": 284,
@@ -11417,8 +11417,7 @@
       "type": "Shrimp",
       "gender": "Male",
       "origin": {
-        "name": "Earth (Fascist Shrimp Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/80"
+        "name": "Earth (Fascist Shrimp Dimension)"
       },
       "location": {
         "name": "Earth (Fascist Shrimp Dimension)",
@@ -11429,7 +11428,8 @@
         "https://rickandmortyapi.com/api/episode/32"
       ],
       "url": "https://rickandmortyapi.com/api/character/503",
-      "created": "2020-05-02T11:53:46.229Z"
+      "created": "2020-05-02T11:53:46.229Z",
+      "likes": "-7"
     },
     {
       "id": 504,
@@ -14620,7 +14620,7 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/648",
       "created": "2020-08-13T10:09:21.278Z",
-      "likes": "2"
+      "likes": "5"
     },
     {
       "id": 649,
