@@ -254,20 +254,21 @@ body{
 
 
 #character-info{
-    padding: 50px 10px 10px 10px;
+    padding: 15px 10px 10px 10px;
     width: 300px;
     min-width:fit-content;
 }
 
-#character-info div label{
+#character-info div{
     font-family: Rockwell;
     font-size: 20px;
+    margin-bottom: 5px;
 }
 
-#character-info div span{
+/* #character-info div span{
     font-family: Rockwell;
     font-size: 20px;
-}
+} */
 
 
 #user-input{
