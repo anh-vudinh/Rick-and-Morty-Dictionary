@@ -11,6 +11,7 @@ let counterNextIndex = 8;
 let searchInput;
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
+const episodeList = document.querySelector("#episode-list")
 const topGallery = document.querySelector("#top-gallery")
 const bottomGallery = document.querySelector("#bottom-gallery")
 const searchForm =document.createElement("form")
@@ -29,6 +30,7 @@ const userInputDiv = document.querySelector("#user-input")
 const nextBtn = document.createElement("button")
 const characterContainer = document.querySelector("#character-container")
 const browseDiv = document.querySelector("#browseNextGallery")
+const pagesCountDiv = document.createElement("DIV")
 const backBtn = document.createElement("BUTTON")
 init();
 
@@ -99,11 +101,13 @@ function nextBtnSearch(){
   counterNextIndex = 8
   backBtn.id = "back-btn"
   nextBtn.id = "next-btn"
+  pagesCountDiv.id = "page-count"
   backBtn.disabled = true
   backBtn.style.opacity = 0;
   nextBtn.disabled = true;
   nextBtn.style.opacity = 0;
   browseDiv.insertBefore(backBtn, browseDiv.children[0])
+  browseDiv.insertBefore(pagesCountDiv, browseDiv.children[1])
   browseDiv.append(nextBtn)
 
   nextBtn.addEventListener("click", () => {
@@ -118,8 +122,12 @@ function nextBtnSearch(){
       backBtn.disabled = false
       backBtn.style.opacity = 1;
     }
+    pagesCountDiv.textContent = `${Math.ceil(counterNextIndex/8)}/${Math.ceil(searchInput.length/8)}`
     imageGalleryArray = searchInput.slice(counterNextIndex-8,counterNextIndex)
     createGalleryImg()
+    if(bottomGallery.childElementCount === 0){
+      browseNextGallery.style.marginTop = "250px"
+    }
   })
 
   backBtn.addEventListener("click", ()=> {
@@ -134,8 +142,10 @@ function nextBtnSearch(){
       nextBtn.disabled = false;
       nextBtn.style.opacity = 1;
     }
+    pagesCountDiv.textContent = `${Math.ceil(counterNextIndex/8)}/${Math.ceil(searchInput.length/8)}`
     imageGalleryArray = searchInput.slice(counterNextIndex-8,counterNextIndex)
     createGalleryImg()
+    browseNextGallery.style.marginTop = "0px"
   })
 }
 
@@ -194,6 +204,12 @@ function createSearchForm(){
 }
 
 function keyupSearch(searchInputText, categoryC, nameC){
+  if(browseDiv.childElementCount < 3){
+    browseDiv.style.marginTop = "0px";
+    browseDiv.insertBefore(backBtn, browseDiv.children[0])
+    browseDiv.insertBefore(pagesCountDiv, browseDiv.children[1])
+    browseDiv.append(nextBtn)
+  }
   searchInput = characterResults.filter((element) => {
     if(searchInputText === "-"){
       //search name in ALL categories
@@ -209,14 +225,22 @@ function keyupSearch(searchInputText, categoryC, nameC){
     }
   })
   counterNextIndex = 8
-  nextBtn.disabled = false
-  backBtn.disabled = true
-  nextBtn.style.opacity = 1
-  backBtn.style.opacity = 0.3
+  pagesCountDiv.textContent = `${Math.ceil(counterNextIndex/8)}/${Math.ceil(searchInput.length/8)}`
   imageGalleryArray = searchInput.slice(0,8)
   if(topGallery.childElementCount > 0){
     topGallery.textContent = ""
     bottomGallery.textContent = ""
+  }
+  if(searchInput.length <= 4){
+    backBtn.disabled = true
+    nextBtn.disabled = true
+    backBtn.style.opacity = 0.3;
+    nextBtn.style.opacity = 0.3;
+  }else{
+    nextBtn.disabled = false
+    backBtn.disabled = true
+    nextBtn.style.opacity = 1
+    backBtn.style.opacity = 0.3
   }
   createGalleryImg()
 }
@@ -224,6 +248,25 @@ function keyupSearch(searchInputText, categoryC, nameC){
 function resetSearchBar(){
   searchForm.reset()
 }
+
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+//\\////\\////\\////\\////                  Display Episode List                ////\\////\\////\\////\\//
+//\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
+
+function displayEpisodeList(){
+  if(episodeList.childElementCount > 0){
+    episodeList.textContent = ""}
+  searchInput.forEach(element => {
+    singleNameDiv = document.createElement("DIV")
+    singleNameDiv.textContent = element.name
+    episodeList.append(singleNameDiv)
+    singleNameDiv.addEventListener("click", ()=> {
+      clearGallery()
+      displaySelectCharacter(element)})
+  })
+}
+
+
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                Display Selected Character            ////\\////\\////\\////\\//
@@ -251,8 +294,10 @@ function displaySelectCharacter(image){
     divTagInfo.append(spanTagInfo)
     characterInfo.append(divTagInfo)
   })
+  browseDiv.textContent = ""
   saveChanges(image)
   likeDislike(image)
+  displayEpisodeList()
 }
 
 function clearGallery(){

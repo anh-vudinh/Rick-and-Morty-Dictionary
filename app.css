@@ -114,6 +114,31 @@ body{
     border-radius: 10px;
 }
 
+#episode-list{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    overflow-y: scroll;
+    max-height: 70vh;
+}
+
+#episode-list div{
+    padding: 5px;
+    font-family: Rockwell;
+    font-size: 18px;
+    z-index: 3;
+    background-color: rgba(226, 226, 226, 0.3);
+}
+
+#episode-list::-webkit-scrollbar{
+    width: 20px;
+    height: 0px;
+  }
+  
+#episode-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 35, 122, 0.56);
+  }
 
 #character-container{
     position: relative;
@@ -165,8 +190,6 @@ body{
     margin:0;
 }
 
-
-
 #top-gallery{
     display: flex;
     align-content: center;
@@ -201,18 +224,30 @@ body{
 
 #next-btn{
     background-image: url("assets/668278_arrows_512x512.png");
-    height:160px;
-    width:160px;
+    height:100px;
+    width:100px;
     background-repeat:no-repeat;
     background-color: transparent;
     border: none;
     margin-top: 20px;
 }
 
+#page-count{
+    height: fit-content;
+    width: 100px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+
 #back-btn{
     background-image: url("assets/backArrow.png");
-    height:160px;
-    width:160px;
+    height:100px;
+    width:100px;
     background-repeat:no-repeat;
     background-color: transparent;
     border: none;
