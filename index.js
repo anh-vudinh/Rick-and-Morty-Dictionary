@@ -99,6 +99,9 @@ function nextBtnSearch(currentSearchArray){
     topGallery.textContent = ""
     bottomGallery.textContent = ""
     counterNextIndex += 8
+    if(counterNextIndex > currentSearchArray.length){
+      browseDiv.textContent = ""
+    }
     imageGalleryArray = currentSearchArray.slice(counterNextIndex-8,counterNextIndex)
     createGalleryImg()
   })
@@ -140,29 +143,33 @@ function createSearchForm(){
       if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
         category = "species"
       }
-      if(searchSelect.value === "-"){
-        searchSelectValue = ""}
+      // if(searchSelect.value === "-"){
+      //   searchSelectValue = ""}
       clearGallery()
-      keyupSearch(searchSelectValue, category)
+      keyupSearch(searchSelectValue, category, searchInputText.value)
       return click1 = true
     }
   })
   //// eventlistener for the searchInputText.value
   searchInputText.addEventListener("keyup", () =>{
     clearGallery()
-    keyupSearch(searchInputText.value, "name")
+    keyupSearch(searchSelectValue, category, searchInputText.value)
   })
 }
 
-function keyupSearch(searchInputText, categoryC){
-  const string = searchInputText.toLowerCase()
+function keyupSearch(searchInputText, categoryC, nameC){
   const searchInput = characterResults.filter((element) => {
-    if(searchInputText === ""){
-      return element.name.toLowerCase().includes(string)
-    } else if(element[`${categoryC}`].toLowerCase().includes(string) && element[`${category}`].toLowerCase() === searchSelectValue.toLowerCase()){
-      return element[`${categoryC}`].toLowerCase().includes(string)
-    }else {
-      return element.name.toLowerCase().includes(string)
+    if(searchInputText === "-"){
+      //search name in ALL categories
+      return element.name.toLowerCase().includes(nameC)
+    } else if(searchInputText !== "-" && nameC === ""){
+      //search by category only
+      return element[`${categoryC}`].toLowerCase().includes(searchInputText.toLowerCase())
+    } else if(searchInputText !== "-" && nameC !== ""){
+      //seach by category AND name
+      if(element[`${categoryC}`].toLowerCase().includes(searchInputText.toLowerCase()) && element.name.toLowerCase().includes(nameC.toLowerCase())){
+        return element
+      }
     }
   })
   imageGalleryArray = searchInput.slice(0,8)
