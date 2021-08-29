@@ -193,13 +193,24 @@ body{
     display: flex;
     width: 100vw;
     position: relative;
-    align-items: center;
-    flex-direction: column;
     top: 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #next-btn{
     background-image: url("assets/668278_arrows_512x512.png");
+    height:160px;
+    width:160px;
+    background-repeat:no-repeat;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+}
+
+#back-btn{
+    background-image: url("assets/backArrow.png");
     height:160px;
     width:160px;
     background-repeat:no-repeat;

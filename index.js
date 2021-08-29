@@ -7,6 +7,8 @@ let characterNameArray = []
 let click1 = true;
 let category = "status";
 let searchSelectValue = "-";
+let counterNextIndex = 8;
+let searchInput;
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const topGallery = document.querySelector("#top-gallery")
@@ -27,6 +29,7 @@ const userInputDiv = document.querySelector("#user-input")
 const nextBtn = document.createElement("button")
 const characterContainer = document.querySelector("#character-container")
 const browseDiv = document.querySelector("#browseNextGallery")
+const backBtn = document.createElement("BUTTON")
 init();
 
 function init(){
@@ -34,6 +37,7 @@ function init(){
     getAllCharacters()
     getGalleryCharacter()
     createSearchForm()
+    nextBtnSearch()
 }
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                 Populating Image Gallery             ////\\////\\////\\////\\//
@@ -46,6 +50,7 @@ function getAllCharacters(){
   })
   return characterResults;
 }
+
 function give8RandomNumbers(dataLength){
   for(let i = 0; i < 8; i++){
      randomNumberArray.push(Math.floor(Math.random()*`${dataLength}`))
@@ -90,22 +95,50 @@ function createGalleryImg(){
     })
 }
 
-function nextBtnSearch(currentSearchArray){
+function nextBtnSearch(){
+  counterNextIndex = 8
+  backBtn.id = "back-btn"
   nextBtn.id = "next-btn"
+  backBtn.disabled = true
+  backBtn.style.opacity = 0;
+  nextBtn.disabled = true;
+  nextBtn.style.opacity = 0;
+  browseDiv.insertBefore(backBtn, browseDiv.children[0])
   browseDiv.append(nextBtn)
-  let counterNextIndex = 8;
 
   nextBtn.addEventListener("click", () => {
     topGallery.textContent = ""
     bottomGallery.textContent = ""
     counterNextIndex += 8
-    if(counterNextIndex > currentSearchArray.length){
-      browseDiv.textContent = ""
+    if(counterNextIndex >= searchInput.length){
+      nextBtn.disabled = true
+      nextBtn.style.opacity = 0.3;
     }
-    imageGalleryArray = currentSearchArray.slice(counterNextIndex-8,counterNextIndex)
+    if(counterNextIndex > 8){
+      backBtn.disabled = false
+      backBtn.style.opacity = 1;
+    }
+    imageGalleryArray = searchInput.slice(counterNextIndex-8,counterNextIndex)
+    createGalleryImg()
+  })
+
+  backBtn.addEventListener("click", ()=> {
+    topGallery.textContent = ""
+    bottomGallery.textContent = ""
+    counterNextIndex -= 8
+    if(counterNextIndex <= 8){
+      backBtn.disabled = true
+      backBtn.style.opacity = 0.3;
+    }
+    if(counterNextIndex < searchInput.length){
+      nextBtn.disabled = false;
+      nextBtn.style.opacity = 1;
+    }
+    imageGalleryArray = searchInput.slice(counterNextIndex-8,counterNextIndex)
     createGalleryImg()
   })
 }
+
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                      Search Bar                      ////\\////\\////\\////\\//
@@ -129,6 +162,11 @@ function createSearchForm(){
        click1 = false
     } 
     else{
+      counterNextIndex = 8
+      nextBtn.disabled = false
+      backBtn.disabled = true
+      nextBtn.style.opacity = 1
+      backBtn.style.opacity = 0.3
       searchSelectValue = searchSelect.value;
       if(searchSelect.value === "Alive"||searchSelect.value === "Dead"||searchSelect.value === "Unknown Status"){
         category = "status"
@@ -143,8 +181,6 @@ function createSearchForm(){
       if(searchSelect.value === "Human"||searchSelect.value === "Mythological Creature"||searchSelect.value === "Alien"){
         category = "species"
       }
-      // if(searchSelect.value === "-"){
-      //   searchSelectValue = ""}
       clearGallery()
       keyupSearch(searchSelectValue, category, searchInputText.value)
       return click1 = true
@@ -158,27 +194,31 @@ function createSearchForm(){
 }
 
 function keyupSearch(searchInputText, categoryC, nameC){
-  const searchInput = characterResults.filter((element) => {
+  searchInput = characterResults.filter((element) => {
     if(searchInputText === "-"){
       //search name in ALL categories
       return element.name.toLowerCase().includes(nameC)
     } else if(searchInputText !== "-" && nameC === ""){
       //search by category only
-      return element[`${categoryC}`].toLowerCase().includes(searchInputText.toLowerCase())
+      return element[`${categoryC}`].includes(searchInputText)
     } else if(searchInputText !== "-" && nameC !== ""){
       //seach by category AND name
-      if(element[`${categoryC}`].toLowerCase().includes(searchInputText.toLowerCase()) && element.name.toLowerCase().includes(nameC.toLowerCase())){
+      if(element[`${categoryC}`].includes(searchInputText) && element.name.toLowerCase().includes(nameC.toLowerCase())){
         return element
       }
     }
   })
+  counterNextIndex = 8
+  nextBtn.disabled = false
+  backBtn.disabled = true
+  nextBtn.style.opacity = 1
+  backBtn.style.opacity = 0.3
   imageGalleryArray = searchInput.slice(0,8)
   if(topGallery.childElementCount > 0){
     topGallery.textContent = ""
     bottomGallery.textContent = ""
   }
   createGalleryImg()
-  nextBtnSearch(searchInput)
 }
 
 function resetSearchBar(){
