@@ -66,11 +66,22 @@ function getGalleryCharacter(){
 
 function createGalleryImg(){
     imageGalleryArray.forEach(image => {
+        const imageGDiv = document.createElement("DIV")
         const imageG = document.createElement("img")
+        const nameOverlay = document.createElement("DIV")
         imageG.src = `${image.image}`
         imageG.style = "height: 200px; width: 200px"
         imageG.id =`ig${image.id}`
-        topGallery.childElementCount >= 4?  bottomGallery.append(imageG):topGallery.append(imageG)
+        nameOverlay.textContent = image.name
+        if(topGallery.childElementCount >= 4){
+          bottomGallery.append(imageGDiv)
+          imageGDiv.append(imageG)
+          imageGDiv.append(nameOverlay)
+        } else{
+          topGallery.append(imageGDiv)
+          imageGDiv.append(imageG)
+          imageGDiv.append(nameOverlay)
+        }
         imageG.addEventListener("click", ()=> {
           resetSearchBar()
           clearGallery()
