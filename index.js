@@ -2,13 +2,15 @@ const BASE_URLG = "https://rickandmortyapi.com/api/character/"
 const BASE_URLP = "http://localhost:3000/characters"
 let characterResults = [];
 let randomNumberArray = [];
-let imageGalleryArray =[];
-let characterNameArray = []
+let imageGalleryArray = [];
+let characterNameArray = [];
+let episodeArrayInfo = [];
 let click1 = true;
 let category = "status";
 let searchSelectValue = "-";
 let counterNextIndex = 8;
 let searchInput;
+let savePreviousBtn;
 const mainWindow = document.querySelector(".main-window")
 const secondWindow = document.querySelector(".second-window")
 const episodeList = document.querySelector("#episode-list")
@@ -32,6 +34,11 @@ const characterContainer = document.querySelector("#character-container")
 const browseDiv = document.querySelector("#browseNextGallery")
 const pagesCountDiv = document.createElement("DIV")
 const backBtn = document.createElement("BUTTON")
+const episodeInfoPopup = document.querySelector("#episodeInfoPopup")
+const episodeNumber = document.querySelector("#episodeNumber")
+const episodeName = document.querySelector("#episodeName")
+const episodeDate = document.querySelector("#episodeDate")
+const episodeExpandBtn = document.createElement("BUTTON")
 init();
 
 function init(){
@@ -40,6 +47,7 @@ function init(){
     getGalleryCharacter()
     createSearchForm()
     nextBtnSearch()
+    createEpisodeListBtn()
 }
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 //\\////\\////\\////\\////                 Populating Image Gallery             ////\\////\\////\\////\\//
@@ -93,6 +101,8 @@ function createGalleryImg(){
           resetSearchBar()
           clearGallery()
           displaySelectCharacter(image)
+          episodeExpandBtn.textContent = "Hide List"
+          displayEpisodeList()
         })
     })
 }
@@ -204,6 +214,12 @@ function createSearchForm(){
 }
 
 function keyupSearch(searchInputText, categoryC, nameC){
+  if(episodeNumber.hasChildNodes() === true){
+    episodeNumber.textContent = ""
+    episodeName.textContent = ""
+    episodeDate.textContent = ""
+    savePreviousBtn = undefined
+  }
   if(browseDiv.childElementCount < 3){
     browseDiv.style.marginTop = "0px";
     browseDiv.insertBefore(backBtn, browseDiv.children[0])
@@ -213,12 +229,12 @@ function keyupSearch(searchInputText, categoryC, nameC){
   searchInput = characterResults.filter((element) => {
     if(searchInputText === "-"){
       //search name in ALL categories
-      return element.name.toLowerCase().includes(nameC)
+      return element.name.toLowerCase().includes(nameC.toLowerCase())
     } else if(searchInputText !== "-" && nameC === ""){
       //search by category only
       return element[`${categoryC}`].includes(searchInputText)
     } else if(searchInputText !== "-" && nameC !== ""){
-      //seach by category AND name
+      //search by category AND name
       if(element[`${categoryC}`].includes(searchInputText) && element.name.toLowerCase().includes(nameC.toLowerCase())){
         return element
       }
@@ -242,6 +258,10 @@ function keyupSearch(searchInputText, categoryC, nameC){
     nextBtn.style.opacity = 1
     backBtn.style.opacity = 0.3
   }
+  if(episodeList.hasChildNodes() === true){
+    episodeList.textContent = ""
+  }
+  episodeExpandBtn.textContent = "List"
   createGalleryImg()
 }
 
@@ -253,19 +273,129 @@ function resetSearchBar(){
 //\\////\\////\\////\\////                  Display Episode List                ////\\////\\////\\////\\//
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
 
-function displayEpisodeList(){
-  if(episodeList.childElementCount > 0){
-    episodeList.textContent = ""}
-  searchInput.forEach(element => {
-    singleNameDiv = document.createElement("DIV")
-    singleNameDiv.textContent = element.name
-    episodeList.append(singleNameDiv)
-    singleNameDiv.addEventListener("click", ()=> {
-      clearGallery()
-      displaySelectCharacter(element)})
+function createEpisodeListBtn(){
+  //append episode expand button with event listener
+  episodeExpandBtn.textContent = "List"
+  episodeExpandBtn.id = "episodeExpandBtn"
+  secondWindow.append(episodeExpandBtn)
+  episodeExpandBtn.addEventListener("click", ()=> {
+    if(episodeList.style.visibility === "visible"){
+      episodeList.style.visibility = "hidden"
+      episodeExpandBtn.textContent = "Show List"
+    } else{
+      episodeList.style.visibility = "visible"
+      episodeExpandBtn.textContent = "Hide List"
+    }
+
+
   })
 }
 
+function displayEpisodeList(){
+  if(searchInput !== undefined){
+    searchInput.forEach(element => {
+      singleNameDiv = document.createElement("DIV")
+      const episodeBtn = document.createElement("BUTTON")
+      const episodeP = document.createElement("P")
+      episodeBtn.id = `eB${element.id}`
+      episodeP.textContent = element.name
+      episodeBtn.textContent = "E"
+      episodeList.append(singleNameDiv)
+      singleNameDiv.append(episodeP)
+      singleNameDiv.append(episodeBtn)
+
+      episodeP.addEventListener("click", ()=> {
+        clearGallery()
+        displaySelectCharacter(element)
+      })
+
+      episodeBtn.addEventListener("click", ()=> {
+        episodeNumber.textContent = ""
+        episodeName.textContent = ""
+        episodeDate.textContent = ""
+        const episodeNumberTitle = document.createElement("DIV")
+        const episodeNameTitle = document.createElement("DIV")
+        const episodeDateTitle = document.createElement("DIV")
+        const exitEpisodeInfoBtn = document.createElement("BUTTON")
+        exitEpisodeInfoBtn.textContent = "x"
+        episodeNumberTitle.textContent = "EPISODE"
+        episodeNameTitle.textContent = "NAME"
+        episodeDateTitle.textContent = "AIR DATE"
+        episodeNumberTitle.style = "text-decoration: underline; margin-bottom: 3px; position: sticky; top: 0; background-color: whitesmoke;"
+        episodeNameTitle.style = "text-align: center; text-decoration: underline; margin-bottom: 3px; position: sticky; top: 0; background-color: whitesmoke;"
+        episodeDateTitle.style = "text-align: center; text-decoration: underline; margin-bottom: 3px; width: 100%; margin-right: 10px; position: sticky; top: 0; background-color: whitesmoke;"
+        episodeNumber.append(episodeNumberTitle)
+        episodeName.append(episodeNameTitle)
+        episodeDate.append(episodeDateTitle)
+        episodeDateTitle.append(exitEpisodeInfoBtn)
+        if(savePreviousBtn !== episodeBtn.id){
+          episodeBtn.parentElement.style.backgroundColor = "rgba(218, 157, 157, 0.8)"
+          episodeBtn.disabled = true;
+          clearGallery()
+          displaySelectCharacter(element)
+          if(savePreviousBtn !== undefined){
+            document.querySelector(`#${savePreviousBtn}`).parentElement.style.backgroundColor = "rgba(226, 226, 226, 0.3)"
+            document.querySelector(`#${savePreviousBtn}`).disabled = false
+          }
+          savePreviousBtn = document.querySelector(`#${episodeBtn.id}`).id
+        }else{
+          document.querySelector(`#${savePreviousBtn}`).parentElement.style.backgroundColor = "rgba(226, 226, 226, 0.3)"
+          document.querySelector(`#${savePreviousBtn}`).disabled = false
+        }
+        exitEpisodeInfoBtn.addEventListener("click", ()=>{
+          episodeBtn.parentElement.style.backgroundColor = "rgba(226, 226, 226, 0.3)"
+          episodeNumber.textContent = ""
+          episodeName.textContent = ""
+          episodeDate.textContent = ""
+          savePreviousBtn = document.querySelector(`#${episodeBtn.id}`).id
+        })
+        getEpisodeInfoFromAPI(element.episode)
+      })  
+    })
+  }
+}
+
+function getEpisodeInfoFromAPI(episode){
+  episode.forEach(element => {
+    fetch(element)
+    .then(resp => resp.json())
+    .then(data => displayEpisodeInfo(data))
+  })
+}
+
+function displayEpisodeInfo(data){
+  episodeArrayInfo = []
+  episodeArrayInfo.push(data)
+  episodeArrayInfo.forEach(element => {
+    const episodeNumberContent = document.createElement("DIV")
+    const episodeNameContent = document.createElement("DIV")
+    const episodeDateContent = document.createElement("DIV")
+    const episodeNumberAnchor = document.createElement("A")
+    const episodeNameAnchor = document.createElement("A")
+    const episodeDateAnchor = document.createElement("A")
+    episodeNumberAnchor.textContent = element.episode
+    episodeNameAnchor.textContent = element.name
+    episodeDateAnchor.textContent = element.air_date
+    episodeNumberAnchor.target = `_blank`
+    episodeNameAnchor.target = `_blank`
+    episodeDateAnchor.target = `_blank`
+    episodeNumberAnchor.href = `https://rickandmorty.fandom.com/wiki/${element.name}`
+    episodeNameAnchor.href = `https://rickandmorty.fandom.com/wiki/${element.name}`
+    episodeDateAnchor.href = `https://rickandmorty.fandom.com/wiki/${element.name}`
+    if(Number.isInteger(episodeNumber.childElementCount/2) === true){
+      episodeNumberContent.style.backgroundColor = "lightgrey"
+      episodeNameContent.style.backgroundColor = "lightgrey"
+      episodeDateContent.style.backgroundColor = "lightgrey"
+    }
+    
+    episodeNumber.append(episodeNumberContent)
+    episodeName.append(episodeNameContent)
+    episodeDate.append(episodeDateContent)
+    episodeNumberContent.append(episodeNumberAnchor)
+    episodeNameContent.append(episodeNameAnchor)
+    episodeDateContent.append(episodeDateAnchor)
+  })
+}
 
 
 //\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\////\\
@@ -297,7 +427,6 @@ function displaySelectCharacter(image){
   browseDiv.textContent = ""
   saveChanges(image)
   likeDislike(image)
-  displayEpisodeList()
 }
 
 function clearGallery(){
