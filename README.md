@@ -44,15 +44,23 @@ https://github.com/anh-vudinh/Rick-and-Morty-Dictionary/blob/main/Preview3.jpg
 #11# When user selects an image after a search, they will a list will expand to the left of the screen
 
 #12.1# The list allows the user to quickly browse through their previous search matches without having to type the same search criteria into the search fields
+
 #12.2# By click on the Names in the list, the user can display the clicked character into the info page
+
 #12.3# Note that the selection will not be highlighted, that property belongs to the (E) button
 
 #13.1# The (E) button gets the episodes from the R&M API and puts them in a list at the center of the screen
+
 #13.2# The episode number, episode name, and air date will be displayed
+
 #13.3# The user can click any of the 3 corresponding Anchors and a new tab will be opened directing to the fan-made wiki associated with that episode
+
 #13.4# There is a red X in the top right corner of the episodes list which will close the window
+
 #13.5# If user wishes just to browse episodes for other characters in the list to the left side, they can just leave the episode list open and press (E) on a new character. This will populate the opened list with the newly selected character's episodes
+
 #13.6# By pressing (E) on a new character, it will highlight which character's episode list the user has open in red.
 
 #14.1# The Hide/Show List button will toggle the visibility of the left side list.
+
 #14.2# After any new search is performed the list will be cleared out and will be populated again once any character is selected from the Gallery after the search
