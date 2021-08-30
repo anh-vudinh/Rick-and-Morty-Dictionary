@@ -341,12 +341,17 @@ function displayEpisodeList(){
         }else{
           document.querySelector(`#${savePreviousBtn}`).parentElement.style.backgroundColor = "rgba(226, 226, 226, 0.3)"
           document.querySelector(`#${savePreviousBtn}`).disabled = false
+          if(savePreviousBtn === episodeBtn.id){
+            episodeBtn.parentElement.style.backgroundColor = "rgba(218, 157, 157, 0.8)"
+            document.querySelector(`#${savePreviousBtn}`).disabled = true
+          }
         }
         exitEpisodeInfoBtn.addEventListener("click", ()=>{
           episodeBtn.parentElement.style.backgroundColor = "rgba(226, 226, 226, 0.3)"
           episodeNumber.textContent = ""
           episodeName.textContent = ""
           episodeDate.textContent = ""
+          episodeBtn.disabled = false
           savePreviousBtn = document.querySelector(`#${episodeBtn.id}`).id
         })
         getEpisodeInfoFromAPI(element.episode)
