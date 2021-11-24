@@ -6,6 +6,12 @@ Features of this project.
 
 https://github.com/anh-vudinh/Rick-and-Morty-Dictionary/blob/main/Preview1.jpg
 
+This project uses db.json
+To run project first run terminal cmd
+npm i -g json-server (to globally install json-server)
+json-server --watch db.json (to run server)
+open index.html in browser
+
 #1.1# Dynamic search bar. You can search based on category, name, or category + name
 
 #1.2# Search bar will populate the gallery with matching string combination. Example- if you type ab, if the letters ab exist anywhere in a character's name in that specific order then they will be added into the gallery
